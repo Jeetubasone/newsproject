@@ -15,7 +15,7 @@ class NewslatterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function searchNewslatters(Request $request)
+    public function searchNewslatters()
     {
         try {
             $query = Newslatter::select('*')
@@ -23,7 +23,7 @@ class NewslatterController extends Controller
                     ->get();
            
 
-            return response(prepareResult(true, $query, trans('Record Fatched Successfully')), 200 , ['Result'=>'Your data has been saved successfully']);
+            return $query;
         } 
         catch (\Throwable $e) {
             Log::error($e);

@@ -10,8 +10,8 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Add News</h6>
-                            <form action="/addnews" method="post" enctype="multipart/form-data">
+                            <h6 class="mb-4">Advertisement</h6>
+                            <form action="/addads" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <select class="form-select" for="category_id" id="category_id" name="category_id" aria-label="Default select example">
@@ -31,12 +31,16 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="title" name="title">
+                                    <label for="add_position" class="form-label">Position</label>
+                                    <input type="text" class="form-control" id="add_position" name="add_position">
                                 </div>
-                                <div class="form-group">
-                                    <label for="content">Description</label>
-                                    <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                                <div class="mb-3">
+                                    <label for="add_rate" class="form-label">Rate</label>
+                                    <input type="text" class="form-control" id="add_rate" name="add_rate">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="add_date" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="add_date" name="add_date">
                                 </div>
                                 <label class="form-label" for="image">Upload Image</label>
                                 <input type="file" class="form-control" name="image" id="image" />

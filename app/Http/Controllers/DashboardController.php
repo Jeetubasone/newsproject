@@ -32,7 +32,8 @@ class DashboardController extends Controller
             }
     }
 
-    /**
+    /**67
+     * 13 `+
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -54,7 +55,7 @@ class DashboardController extends Controller
             // $data['total'] = News::select('id')->where('category_id', $c->id)->count();
             $details[] = $data;
         }
-        return response(prepareResult(true, $details, trans('Record Fatched Successfully')), 200 , ['Result'=>'Your data has been saved successfully']);
+        return $details;
             } 
             catch (\Throwable $e) {
                 Log::error($e);

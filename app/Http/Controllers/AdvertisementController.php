@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\News;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -37,7 +39,17 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        //
+        $query = Category::select('*')
+        ->with('subcategory:id,parent_id,name as sname,description')
+        ->whereNull('parent_id')
+        ->orderBy('id', 'desc')
+        ->get();
+        $query1 = Category::select('*')
+        ->whereNotNull('parent_id')
+        // ->where('parent_id', $query->id)
+        ->orderBy('id', 'desc')
+        ->get();
+        return view('ads')->with('query', $query)->with('query1', $query1);
     }
 
     /**

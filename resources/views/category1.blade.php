@@ -43,12 +43,6 @@
                         <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="#"> {{ date('D-m-d-Y') }}</a>
                         </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Advertise</a>
-                        </li>
-                        <li class="nav-item border-right border-secondary">
-                            <a class="nav-link text-body small" href="#">Contact</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-body small" href="/dashboard">admin</a>
                         </li>
