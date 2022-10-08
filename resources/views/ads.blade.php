@@ -42,8 +42,8 @@
                                     <label for="add_date" class="form-label">Date</label>
                                     <input type="date" class="form-control" id="add_date" name="add_date">
                                 </div>
-                                <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" name="image" id="image" />
+                                <label class="form-label" for="add_image">Upload Image</label>
+                                <input type="file" class="form-control" name="add_image" id="add_image" />
                                 <br>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </form>

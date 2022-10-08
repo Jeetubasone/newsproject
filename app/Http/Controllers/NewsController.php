@@ -102,7 +102,7 @@ class NewsController extends Controller
             $info->total_view = $request->total_view;
             $info->save();
             DB::commit();
-            return redirect('/addnews')->with('status', 'news added!');
+            return $info;
         } catch (\Throwable $e) {
             Log::error($e);
             DB::rollback();

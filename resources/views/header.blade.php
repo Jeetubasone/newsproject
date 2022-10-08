@@ -21,11 +21,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
@@ -59,13 +59,13 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>News</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="categorys" class="dropdown-item">News Category</a>
-                            <a href="subcategories" class="dropdown-item">News Subcategory</a>
-                            <a href="all-news" class="dropdown-item">All News</a>
+                            <a href="/categorys" class="dropdown-item">News Category</a>
+                            <a href="/subcategories" class="dropdown-item">News Subcategory</a>
+                            <a href="/all-news" class="dropdown-item">All News</a>
                         </div>
                     </div>
                     <a href="/addappsetting" class="nav-item nav-link"><i class="fa fa-th me-2"></i>App Settings</a>

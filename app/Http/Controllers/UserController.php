@@ -53,7 +53,7 @@ class UserController extends Controller
                     // $info = "Hello world";
                     // return "Hello world";
                    
-                    return response(prepareResult(true, $data, trans('logged in successfully')), 200,  ['Result'=>'logged in successfully']);
+                    return redirect("/dashboard");
 
                     } else {
                         return response(prepareResult(false, [], trans('message_wrong_password')), 500,  ['Result'=>'message_wrong_password']);

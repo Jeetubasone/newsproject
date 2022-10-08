@@ -17,30 +17,27 @@
                     <thead>
                         <tr class="text-white">
                             <th scope="col">No</th>
-                            <th scope="col">Category</th>
                             <th scope="col">SubCategory</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($query as $key => $q)
+                        @foreach($q['subcategory'] as $keys => $qr)
                         <tr>
-                            <td>{{$key + 1}}</td>
+                            <td>{{$key + 1 }}</td>
 
-
-                            <td>{{$q->name}}</td>
-
-                            @foreach($q['subcategory'] as $key => $qr)
 
                             <td>{{$qr['sname']}}</td>
+                            <td>{{$q->name}}</td>
 
-                            @endforeach
-
-                            <td><a href="{{ url('/subcategories/edit', $q->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                <a href="{{ url('/subcategories/delete', $q->id) }}" class="btn btn-danger btn-sm ">Delete</a>
+                            <td><a href="{{ url('/subcategories/edit', $qr->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ url('/subcategories/delete', $qr->id) }}" class="btn btn-danger btn-sm ">Delete</a>
                             </td>
-                        </tr>
+                            @endforeach
                         @endforeach
+                        </tr>
                     </tbody>
                 </table>
                 <!-- <table class="table table-bordered">

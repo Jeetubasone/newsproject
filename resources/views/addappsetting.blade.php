@@ -14,52 +14,52 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="email" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="email">
+                                        <input type="email" class="form-control" id="email" name="email">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" class="form-control" id="phone">
+                                        <input type="text" class="form-control" id="phone" name="phone">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="site_name" class="form-group col-md-6">Site Name</label>
-                                    <input type="text" class="form-control" id="site_name">
+                                    <label for="site_name" name="site_name" class="form-group col-md-6">Site Name</label>
+                                    <input type="text" class="form-control" id="site_name"  name="site_name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="site_logo" class="form-label">Site Logo</label>
-                                    <input type="file" class="form-control" id="site_logo">
+                                    <input type="file" class="form-control" id="site_logo" name="site_logo">
                                 </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                     <label for="facebook" class="form-label">Facebook</label>
-                                    <input type="text" class="form-control" id="facebook">
+                                    <input type="text" class="form-control" id="facebook" name="facebook">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="twitter" class="form-label">Twitter</label>
-                                    <input type="text" class="form-control" id="twitter">
+                                    <label for="twitter"  class="form-label">Twitter</label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter">
                                 </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                     <label for="linkedin" class="form-label">Linkedin</label>
-                                    <input type="text" class="form-control" id="linkedin">
+                                    <input type="text" class="form-control" id="linkedin" name="linkedin" >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="youtube" class="form-label">Youtube</label>
-                                    <input type="text" class="form-control" id="youtube">
+                                    <input type="text" class="form-control" id="youtube" name="youtube">
                                 </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="about_us" class="form-label">About us</label>
-                                    <input type="text" class="form-control" id="about_us">
+                                    <input type="text" class="form-control" id="about_us" name="about_us">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address">
+                                    <input type="text" class="form-control" id="address" name="address">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </form>

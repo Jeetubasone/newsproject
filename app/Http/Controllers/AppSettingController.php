@@ -50,7 +50,7 @@ class AppSettingController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'site_name'     => 'required|max:250',
+            'site_name'     => 'nullable|max:250',
             'site_logo'     => 'nullable|image|mimes:png',
             'email'         => 'required|max:250',
             'facebook'      => 'nullable|url',

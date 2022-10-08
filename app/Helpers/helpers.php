@@ -16,7 +16,7 @@ function prepareResult($error, $data, $msg)
 
 function imageBaseURL() {
 
-return "http://192.168.1.25:8000/";
+return "http://192.168.1.17:8000/";
 // return "https://backend.gofactz.com/public/";
 
 }
