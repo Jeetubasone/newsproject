@@ -56,7 +56,7 @@ Route::get('/categorynews/{id}', [App\Http\Controllers\PublicViewController::cla
 Route::get('/singlenews', [App\Http\Controllers\PublicViewController::class, 'singleNews']);
 Route::get('/singlenews/{id}', [App\Http\Controllers\PublicViewController::class, 'showNewsContent']);
 
-Route::get('/newslatters', [App\Http\Controllers\NewslatterController::class, 'searchNewslatters']);
+Route::post('/newslatters', [App\Http\Controllers\NewslatterController::class, 'store']);
 
 Route::get('/addappsetting', function () {
     return view('/addappsetting');
@@ -66,8 +66,12 @@ Route::post('/addappsetting', [App\Http\Controllers\AppSettingController::class,
 Route::get('/ads', [App\Http\Controllers\AdvertisementController::class, 'create']);
 Route::post('/addads', [App\Http\Controllers\AdvertisementController::class, 'store']);
 
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create']);
 Route::get('/login', function () {
     return view('/login');
 });
-
 Route::post('/login', [App\Http\Controllers\UserController::class, 'userLogin']);

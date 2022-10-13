@@ -6,6 +6,7 @@ use App\Models\Dashboard;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Advertisement;
+use App\Models\Newslatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -24,12 +25,22 @@ class DashboardController extends Controller
             // $data = [];
             $totalads = Advertisement::count();
             $totalnews = News::count();
-            return view('dashboard')->with('totalnews', $totalnews)->with('totalads', $totalads);
-            } 
-            catch (\Throwable $e) {
-                Log::error($e);
-                return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result'=>'Your data has not been saved']);
+            $newslatters = Newslatter::all();
+            $category = Category::whereNull('parent_id')->get('id');
+            $i = 0;
+            foreach ($category as  $c) {
+                $data1 = Category::find($c->id);
+                $i = $i + 1;
+                $data['id'] = $i;
+                $data['name'] = $data1->name;
+                $data['total'] = News::select('id')->where('category_id', $c->id)->count();
+                $details[] = $data;
             }
+            return view('dashboard', compact('totalnews', 'totalads','details','newslatters'));
+        } catch (\Throwable $e) {
+            Log::error($e);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result' => 'Your data has not been saved']);
+        }
     }
 
     /**67
@@ -42,34 +53,30 @@ class DashboardController extends Controller
     {
 
         try {
-        $category= Category::whereNull('parent_id')->get('id');
-        $i = 0;			
-		foreach($category as  $c ){
-            $data1 = Category::find($c->id);
-            $i= $i+1;
-            $data['id'] = $i;
-            $data['name']= $data1->name;
-            $data['total'] = News::select('id')->where('category_id', $c->id)->count();
-            // $data['id'] = Category::select('id')->where('id', $c->id)->first('id');
-            // $data['name']= Category::select('name')->where('id', $c->id)->first('name');
-            // $data['total'] = News::select('id')->where('category_id', $c->id)->count();
-            $details[] = $data;
-        }
-        return $details;
-            } 
-            catch (\Throwable $e) {
-                Log::error($e);
-                return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result'=>'Your data has not been saved']);
+            $category = Category::whereNull('parent_id')->get('id');
+            $i = 0;
+            foreach ($category as  $c) {
+                $data1 = Category::find($c->id);
+                $i = $i + 1;
+                $data['id'] = $i;
+                $data['name'] = $data1->name;
+                $data['total'] = News::select('id')->where('category_id', $c->id)->count();
+                $details[] = $data;
             }
+            return $details;
+        } catch (\Throwable $e) {
+            Log::error($e);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result' => 'Your data has not been saved']);
+        }
         // $data = 	DB::table('news')
-		// 		->join("categories", "news.category_id", "=", "categories.id")
+        // 		->join("categories", "news.category_id", "=", "categories.id")
         //         // ->where('categories.id', $c)
-		// 		->select(array('categories.id', 'categories.name', DB::Raw('count(news.id) as total_news ') ))
-		// 		->groupBy(['categories.id', 'categories.name'])
-		// 		->orderBy('news.created_at', 'desc')
-		// 		->get();
+        // 		->select(array('categories.id', 'categories.name', DB::Raw('count(news.id) as total_news ') ))
+        // 		->groupBy(['categories.id', 'categories.name'])
+        // 		->orderBy('news.created_at', 'desc')
+        // 		->get();
         //         $re[] = $data;
-        
+
     }
     /**
      * Store a newly created resource in storage.

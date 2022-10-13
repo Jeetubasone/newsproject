@@ -22,7 +22,7 @@
                     </div>
                     <a href="singlenews" class="nav-item nav-link active">Single News</a>
                     
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">

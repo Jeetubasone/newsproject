@@ -65,8 +65,8 @@ class NewslatterController extends Controller
             $info->email = $request->email;
             $info->save();
             DB::commit();
-            return $info;
-            return response()->json(prepareResult(true, $info, trans('Your data has been saved successfully')), 200 , ['Result'=>'Your data has been saved successfully']);
+           
+            return redirect('view');
         } catch (\Throwable $e) {
             Log::error($e);
             DB::rollback();

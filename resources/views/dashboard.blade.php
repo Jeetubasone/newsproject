@@ -43,31 +43,59 @@
                                 <tr class="text-white">
                                     <th scope="col">Id</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Total View</th>
+                                    <th scope="col">Total News</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($details as $key => $d)
                                 <tr>
-                                    <td>01</td>
-                                    <td>Sports</td>
-                                    <td>15</td>
+                                    <td>{{$details[$key]['id']}}</td>
+                                    <td>{{$details[$key]['name']}}</td>
+                                    <td>{{$details[$key]['total']}}</td>
                                 </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td>Business</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>03</td>
-                                    <td>Polity</td>
-                                    <td>17</td>
-                                </tr>
+                               
+                           
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- Recent Sales End -->
+
+
+            <!-- Newslatters Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Newslatters</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Email</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($newslatters as $key => $d)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$newslatters[$key]['email']}}</td>
+                                   
+                                </tr>
+                               
+                           
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Newslatters End -->
 
 
             @include('footer')
