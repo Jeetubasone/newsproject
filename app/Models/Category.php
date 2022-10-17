@@ -18,4 +18,5 @@ public function news(){
 
     return $this->hasMany(Category::class, 'category_id', 'id');
 }
+
 }

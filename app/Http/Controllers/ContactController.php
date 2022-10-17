@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
@@ -41,7 +43,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info = new Contact;
+        $info->name = $request->name;
+        $info->email = $request->email;
+        $info->subject = $request->subject;
+        $info->message = $request->message;
+        $info->save();
+        DB::commit();
+        return redirect('/contact');
     }
 
     /**

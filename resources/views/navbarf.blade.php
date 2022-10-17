@@ -9,7 +9,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                    <a href="/view" class="nav-item nav-link">Home</a>
+                    <a href="/view" class="nav-item nav-link active">Home</a>
                     <div class="nav-item dropdown">
                         <a href="categorynews" class="nav-link dropdown-toggle" data-toggle="dropdown">Category</a>
                         
@@ -20,16 +20,16 @@
                         </div>
                         
                     </div>
-                    <a href="singlenews" class="nav-item nav-link active">Single News</a>
+                    <a href="/singlenews" class="nav-item nav-link ">Single News</a>
                     
                     <a href="/contact" class="nav-item nav-link">Contact</a>
                 </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                <!-- <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
                         <button class="input-group-text bg-primary text-dark border-0 px-3"><i class="fa fa-search"></i></button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </nav>
     </div>

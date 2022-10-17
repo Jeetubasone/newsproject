@@ -30,9 +30,6 @@ Route::post('/add', [App\Http\Controllers\CategoryController::class, 'storeCateg
 Route::get('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
 Route::put('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
 Route::get('/categorys/delete/{id}', [App\Http\Controllers\CategoryController::class, 'destroyCategory']);
-
-
-
 Route::get('all-news', [App\Http\Controllers\NewsController::class, 'searchNews']);
 Route::get('/addnews', [App\Http\Controllers\NewsController::class, 'create']);
 Route::post('/addnews', [App\Http\Controllers\NewsController::class, 'store']);
@@ -71,6 +68,7 @@ Route::post('/addads', [App\Http\Controllers\AdvertisementController::class, 'st
 //     return view('contact');
 // });
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create']);
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store']);
 Route::get('/login', function () {
     return view('/login');
 });

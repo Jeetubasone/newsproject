@@ -7,7 +7,7 @@
                     <div class="col-12">
                         <div class="section-title">
                             <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-                            <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                            <a class="text-secondary font-weight-medium text-decoration-none" href=""></a>
                         </div>
                     </div>
                     @foreach($query as $key => $q)
@@ -21,7 +21,10 @@
                                     <a class="text-body" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                 </div>
                                 <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
-                                <p class="m-0">{{$q->content}}</p>
+                                <p class="m-0">{{\Illuminate\Support\Str::limit($q->content, 200)}}</p>
+                                <div class="d-flex justify-content-end">
+                                <a class="btn btn-primary btn-sm " href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}} role="button">Read More</a>
+                                </div>
                             </div>
 
                         </div>
@@ -65,30 +68,27 @@
                         <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-3">
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                        <a href="https://www.facebook.com/indiatvnews/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
                             <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                             <span class="font-weight-medium">12,345 Fans</span>
                         </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                        <a href="https://twitter.com/timesnow" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
                             <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                             <span class="font-weight-medium">12,345 Followers</span>
                         </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                        <a href="https://in.linkedin.com/company/republic-world?trk=similar-pages" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
                             <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                             <span class="font-weight-medium">12,345 Connects</span>
                         </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                        <a href="https://www.instagram.com/bbcnews/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
                             <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                             <span class="font-weight-medium">12,345 Followers</span>
                         </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                        <a href="https://www.youtube.com/channel/UCYfdidRxbB8Qhf0Nx7ioOYw" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
                             <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                             <span class="font-weight-medium">12,345 Subscribers</span>
                         </a>
-                        <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
-                            <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                            <span class="font-weight-medium">12,345 Followers</span>
-                        </a>
+                        
                     </div>
                 </div>
                 <!-- Social Follow End -->

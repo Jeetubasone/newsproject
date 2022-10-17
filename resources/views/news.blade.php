@@ -21,6 +21,7 @@
                                   <th scope="col">Subategory Name</th>
                                   <th scope="col">Title</th>
                                   <th scope="col">Total View</th>
+                                  <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

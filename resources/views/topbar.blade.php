@@ -17,22 +17,19 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" href="https://twitter.com/timesnow"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" href="https://www.facebook.com/indiatvnews/"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
+                            <a class="nav-link text-body" href="https://in.linkedin.com/company/republic-world?trk=similar-pages"><small class="fab fa-linkedin-in"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
+                            <a class="nav-link text-body" href="https://www.instagram.com/bbcnews/"><small class="fab fa-instagram"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                            <a class="nav-link text-body" href="https://www.youtube.com/channel/UCYfdidRxbB8Qhf0Nx7ioOYw"><small class="fab fa-youtube"></small></a>
                         </li>
                     </ul>
                 </nav>
