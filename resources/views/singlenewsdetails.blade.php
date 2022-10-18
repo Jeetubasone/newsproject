@@ -20,7 +20,7 @@
                         <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Category</a>
                         
                         <div class="dropdown-menu rounded-0 m-0">
-                        @foreach($query as $key => $q)
+                        @foreach($query->unique('category_id') as $key => $q)
                             <a href="{{ url('/categorynews', $q->category_id) }}" class="dropdown-item" id="category_id" name="category_id" value={{$q->id}}>{{$q->category_name}}</a>
                         @endforeach
                         </div>
@@ -198,19 +198,13 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex flex-wrap m-n1">
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                            </div>
+                        <div class="d-flex flex-wrap m-n1">
+
+                            @foreach($query as $key => $q)
+                            <a href="{{ url('/categorynews', $q->category_id) }}" class="btn btn-sm btn-outline-secondary m-1" id="category_id" name="category_id" value={{$q->id}}>{{$q->category_name}}</a>
+                            @endforeach
                         </div>
+                    </div>
                     </div>
                     <!-- Tags End -->
                 </div>

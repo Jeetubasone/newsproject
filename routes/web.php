@@ -21,7 +21,7 @@ Route::get('/store', [App\Http\Controllers\CategoryController::class, 'store']);
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'totalDetails']);
 
 
-Route::middleware('auth:api')->group(function () {
+// Route::middleware('auth:api')->group(function () {
 
 Route::get('/add', function () {
     return view('addcategory');
@@ -30,6 +30,9 @@ Route::post('/add', [App\Http\Controllers\CategoryController::class, 'storeCateg
 Route::get('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
 Route::put('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
 Route::get('/categorys/delete/{id}', [App\Http\Controllers\CategoryController::class, 'destroyCategory']);
+
+
+
 Route::get('all-news', [App\Http\Controllers\NewsController::class, 'searchNews']);
 Route::get('/addnews', [App\Http\Controllers\NewsController::class, 'create']);
 Route::post('/addnews', [App\Http\Controllers\NewsController::class, 'store']);
@@ -45,7 +48,7 @@ Route::get('/subcategories/edit/{id}', [App\Http\Controllers\CategoryController:
 Route::put('/subcategories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
 Route::get('/subcategories/delete/{id}', [App\Http\Controllers\CategoryController::class, 'destroySubCategory']);
 
-});
+// });
 Route::get('/', [App\Http\Controllers\PublicViewController::class, 'index']);
 Route::get('/view', [App\Http\Controllers\PublicViewController::class, 'index']);
 Route::get('/categorynews', [App\Http\Controllers\PublicViewController::class, 'categoryNews']);

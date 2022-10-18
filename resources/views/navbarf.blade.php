@@ -14,8 +14,10 @@
                         <a href="categorynews" class="nav-link dropdown-toggle" data-toggle="dropdown">Category</a>
                         
                         <div class="dropdown-menu rounded-0 m-0">
-                        @foreach($query1 as $key => $q)
+                        @foreach($query1->unique('category_id') as $key => $q)
+                       
                             <a href="{{ url('/categorynews', $q->category_id) }}" class="dropdown-item" id="category_id" name="category_id" value={{$q->id}}>{{$q->category_name}}</a>
+                       
                         @endforeach
                         </div>
                         
