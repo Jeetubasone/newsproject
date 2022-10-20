@@ -52,8 +52,8 @@ class UserController extends Controller
 
                     // $info = "Hello world";
                     // return "Hello world";
-                   
-                    return redirect("/dashboard");
+                    
+                return redirect("/dashboard")->with('data', $data); 
 
                     } else {
                         return response(prepareResult(false, [], trans('message_wrong_password')), 500,  ['Result'=>'message_wrong_password']);

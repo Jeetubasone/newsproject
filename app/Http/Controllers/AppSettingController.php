@@ -98,16 +98,15 @@ class AppSettingController extends Controller
      * @param  \App\Models\AppSetting  $appSetting
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         try {
             
-            $info = AppSetting::find($id);
-            if($info)
-            {
-                return response(prepareResult(true, $info, trans('Record Featched Successfully')), 200 , ['Result'=>'httpcodes.found']);
-            }
-            return response(prepareResult(false, [], trans('Error while featching Records')),500,  ['Result'=>'httpcodes.not_found']);
+            $info = AppSetting::select('*')
+                  ->get();
+            $data = $info[0];
+                // return $data;
+            return view('addappsetting')->with('data',$data);
         } catch (\Throwable $e) {
             Log::error($e);
             return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result'=>'httpcodes.internal_server_error']);
@@ -135,13 +134,13 @@ class AppSettingController extends Controller
     public function update(Request $request, $id)
     {
         $validation = Validator::make($request->all(), [
-            // 'site_name'     => 'required|max:250',
-            // 'site_logo'     => 'nullable|image|mimes:png',
-            // 'email'         => 'required|max:250',
-            // 'facebook'      => 'nullable|url',
-            // 'twitter'       => 'nullable|url',
-            // 'linkedin'      => 'nullable|url',
-            // 'youtube'       => 'nullable|url'
+            'site_name'     => 'nullable|max:250',
+            'site_logo'     => 'nullable|image|mimes:png',
+            'email'         => 'nullable|max:250',
+            'facebook'      => 'nullable|url',
+            'twitter'       => 'nullable|url',
+            'linkedin'      => 'nullable|url',
+            'youtube'       => 'nullable|url'
         ]);
 
         if ($validation->fails()) {

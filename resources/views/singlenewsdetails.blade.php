@@ -78,7 +78,7 @@
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
-                                <a class="text-body" href="">Jan 01, 2045</a>
+                                <a class="text-body" href="">{{date('d-M-Y', strtotime($q->created_at))}}</a>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{$q->title}}</h1>
                             <p>{{$q->content}}</p>
@@ -90,16 +90,7 @@
                             <img class="img-fluid w-50 float-right mr-4 mb-2" src="{{$q->image}}">
                             <p>{{$q->content}}</p>
                         </div>
-                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <span>John Doe</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
-                            </div>
-                        </div>
+                        
                     </div>
                     @endforeach
                     <!-- News Detail End -->
@@ -164,7 +155,7 @@
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{$q->category_name}}</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                        <a class="text-body" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
                                 </div>

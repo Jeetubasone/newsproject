@@ -6,6 +6,7 @@ use App\Models\Dashboard;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Advertisement;
+use App\Models\AppSetting;
 use App\Models\Newslatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,10 @@ class DashboardController extends Controller
                 $data['total'] = News::select('id')->where('category_id', $c->id)->count();
                 $details[] = $data;
             }
-            return view('dashboard', compact('totalnews', 'totalads','details','newslatters'));
+            $info = AppSetting::select('*')
+                  ->get();
+            $data = $info[0];
+            return view('dashboard', compact('totalnews', 'totalads','details','newslatters','data'));
         } catch (\Throwable $e) {
             Log::error($e);
             return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result' => 'Your data has not been saved']);

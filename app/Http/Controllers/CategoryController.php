@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -19,17 +20,18 @@ class CategoryController extends Controller
     {
         try {
             $query = Category::select('*')
-                    ->with('subcategory:id,parent_id,name as sname,description')
-                    ->whereNull('parent_id')
-                    ->orderBy('id', 'desc')
-                    ->get();
-            
-            return view('category')->with('query', $query);
+                ->with('subcategory:id,parent_id,name as sname,description')
+                ->whereNull('parent_id')
+                ->orderBy('id', 'desc')
+                ->get();
+            $info = AppSetting::select('*')
+                ->get();
+            $data = $info[0];
+            return view('category')->with('query', $query)->with('data', $data);
             // return response(prepareResult(true, $query, trans('Record Fatched Successfully')), 200 , ['Result'=>'Your data has been saved successfully']);
-        } 
-        catch (\Throwable $e) {
+        } catch (\Throwable $e) {
             Log::error($e);
-            return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result'=>'Your data has not been saved']);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Error while fatching Records')), 500,  ['Result' => 'Your data has not been saved']);
         }
     }
     /**
@@ -40,21 +42,39 @@ class CategoryController extends Controller
     public function viewSubCategory()
     {
         $query = Category::select('*')
-        ->with('subcategory:id,parent_id,name as sname,description')
-        ->whereNull('parent_id')
-        ->orderBy('id', 'desc')
-        ->get();
-        return view('subcategory')->with('query', $query);
+            ->with('subcategory:id,parent_id,name as sname,description')
+            ->whereNull('parent_id')
+            ->orderBy('id', 'desc')
+            ->get();
+            $info = AppSetting::select('*')
+                ->get();
+            $data = $info[0];
+        return view('subcategory')->with('query', $query)->with('data', $data);
     }
 
+
+    public function viewAddCategory()
+    {
+      
+    
+
+            $info = AppSetting::select('*')
+                ->get();
+            $data = $info[0];
+        return view('addcategory')->with('data', $data);
+    }
     public function viewAddSubCategory()
     {
         $query = Category::select('*')
-        ->with('subcategory:id,parent_id,name as sname,description')
-        ->whereNull('parent_id')
-        ->orderBy('id', 'desc')
-        ->get();
-        return view('addsubcategory')->with('query', $query);
+            ->with('subcategory:id,parent_id,name as sname,description')
+            ->whereNull('parent_id')
+            ->orderBy('id', 'desc')
+            ->get();
+
+            $info = AppSetting::select('*')
+                ->get();
+            $data = $info[0];
+        return view('addsubcategory')->with('query', $query)->with('data', $data);
     }
 
     /**
@@ -65,16 +85,16 @@ class CategoryController extends Controller
      */
     public function storeCategory(Request $request)
     {
-       
+
         $validation = Validator::make($request->all(), [
             'name'                    => 'required|unique:categories,name',
-             
+
         ]);
 
         if ($validation->fails()) {
-            return response(prepareResult(false, $validation->errors(), $validation->errors()), 500,  ['Result'=>'Your data has not been saved']);
+            return response(prepareResult(false, $validation->errors(), $validation->errors()), 500,  ['Result' => 'Your data has not been saved']);
         }
-        
+
         DB::beginTransaction();
         try {
             $info = new Category;
@@ -88,23 +108,23 @@ class CategoryController extends Controller
         } catch (\Throwable $e) {
             Log::error($e);
             DB::rollback();
-            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been saved')), 500,  ['Result'=>'Your data has not been saved']);
-        } 
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been saved')), 500,  ['Result' => 'Your data has not been saved']);
+        }
     }
 
 
     public function storeSubCategory(Request $request)
     {
-       
+
         $validation = Validator::make($request->all(), [
             'name'                    => 'required|unique:categories,name',
-             
+
         ]);
 
         if ($validation->fails()) {
-            return response(prepareResult(false, $validation->errors(), $validation->errors()), 500,  ['Result'=>'Your data has not been saved']);
+            return response(prepareResult(false, $validation->errors(), $validation->errors()), 500,  ['Result' => 'Your data has not been saved']);
         }
-        
+
         DB::beginTransaction();
         try {
             $info = new Category;
@@ -118,8 +138,8 @@ class CategoryController extends Controller
         } catch (\Throwable $e) {
             Log::error($e);
             DB::rollback();
-            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been saved')), 500,  ['Result'=>'Your data has not been saved']);
-        } 
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been saved')), 500,  ['Result' => 'Your data has not been saved']);
+        }
     }
     /**
      * Display the specified resource.
@@ -130,17 +150,16 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
-            
+
             $info = Category::find($id);
-            if($info)
-            {
-                return response(prepareResult(true, $info, trans('Record Featched Successfully')), 200 , ['Result'=>'httpcodes.found']);
+            if ($info) {
+                return response(prepareResult(true, $info, trans('Record Featched Successfully')), 200, ['Result' => 'httpcodes.found']);
             }
-            return response(prepareResult(false, [], trans('Error while featching Records')),500,  ['Result'=>'httpcodes.not_found']);
+            return response(prepareResult(false, [], trans('Error while featching Records')), 500,  ['Result' => 'httpcodes.not_found']);
         } catch (\Throwable $e) {
             Log::error($e);
-            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result'=>'httpcodes.internal_server_error']);
-        } 
+            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result' => 'httpcodes.internal_server_error']);
+        }
     }
 
     /**
@@ -152,7 +171,10 @@ class CategoryController extends Controller
     public function editCategory($id)
     {
         $info = DB::table('categories')->find($id);
-        return view('editcategory')->with('info', $info);
+        $q = AppSetting::select('*')
+                ->get();
+            $data = $q[0];
+        return view('editcategory')->with('info', $info)->with('data', $data);
     }
 
     /**
@@ -166,11 +188,11 @@ class CategoryController extends Controller
     {
         $validation = Validator::make($request->all(), [
             // 'name'                    => 'required|unique:categories,name',
-           
+
         ]);
 
         if ($validation->fails()) {
-            return response(prepareResult(false, $validation->errors(), trans('validation_failed')), 500,  ['Result'=>'Your data has not been saved']);
+            return response(prepareResult(false, $validation->errors(), trans('validation_failed')), 500,  ['Result' => 'Your data has not been saved']);
         }
 
         DB::beginTransaction();
@@ -185,7 +207,7 @@ class CategoryController extends Controller
         } catch (\Throwable $e) {
             Log::error($e);
             DB::rollback();
-            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been Updated')), 500,  ['Result'=>'Your data has not been saved']);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('Your data has not been Updated')), 500,  ['Result' => 'Your data has not been saved']);
         }
     }
 
@@ -198,36 +220,32 @@ class CategoryController extends Controller
     public function destroyCategory($id)
     {
         try {
-            
+
             $info = Category::find($id);
-            if($info)
-            {
-                $result=$info->delete();
+            if ($info) {
+                $result = $info->delete();
                 return redirect('categorys')->with('status', 'category deleted!');
             }
-            return response(prepareResult(false, [], trans('Record Id Not Found')),500,  ['Result'=>'httpcodes.not_found']);
+            return response(prepareResult(false, [], trans('Record Id Not Found')), 500,  ['Result' => 'httpcodes.not_found']);
         } catch (\Throwable $e) {
             Log::error($e);
-            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result'=>'httpcodes.internal_server_error']);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result' => 'httpcodes.internal_server_error']);
         }
-
-        
     }
 
     public function destroySubCategory($id)
     {
         try {
-            
+
             $info = Category::find($id);
-            if($info)
-            {
-                $result=$info->delete();
+            if ($info) {
+                $result = $info->delete();
                 return redirect('subcategories')->with('status', 'subcategory deleted!');
             }
-            return response(prepareResult(false, [], trans('Record Id Not Found')),500,  ['Result'=>'httpcodes.not_found']);
+            return response(prepareResult(false, [], trans('Record Id Not Found')), 500,  ['Result' => 'httpcodes.not_found']);
         } catch (\Throwable $e) {
             Log::error($e);
-            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result'=>'httpcodes.internal_server_error']);
+            return response()->json(prepareResult(false, $e->getMessage(), trans('translate.something_went_wrong')), 500,  ['Result' => 'httpcodes.internal_server_error']);
         }
-}
+    }
 }

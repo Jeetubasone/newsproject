@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\AppSetting;
 use App\Models\News;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -49,7 +50,10 @@ class AdvertisementController extends Controller
         // ->where('parent_id', $query->id)
         ->orderBy('id', 'desc')
         ->get();
-        return view('ads')->with('query', $query)->with('query1', $query1);
+        $info = AppSetting::select('*')
+        ->get();
+        $data = $info[0];
+        return view('ads')->with('query', $query)->with('query1', $query1)->with('data', $data);
     }
 
     /**

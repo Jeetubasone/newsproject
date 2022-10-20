@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Category;
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -29,11 +30,13 @@ class NewsController extends Controller
                 // ->select( 'news.*' ,)
 				->orderBy('news.created_at', 'desc')
                 ->get();
-				
+				$info = AppSetting::select('*')
+                  ->get();
+            $data = $info[0];
                 // $re[] = $data;
            
 
-            return view('news')->with('query', $query);
+            return view('news')->with('query', $query)->with('data', $data);
         } 
         catch (\Throwable $e) {
             Log::error($e);
@@ -58,7 +61,10 @@ class NewsController extends Controller
         // ->where('parent_id', $query->id)
         ->orderBy('id', 'desc')
         ->get();
-        return view('addnews')->with('query', $query)->with('query1', $query1);
+        $info = AppSetting::select('*')
+                  ->get();
+            $data = $info[0];
+        return view('addnews')->with('query', $query)->with('query1', $query1)->with('data', $data);
     }
 
     /**
@@ -149,7 +155,11 @@ class NewsController extends Controller
         ->whereNotNull('parent_id')
         ->orderBy('id', 'desc')
         ->get();
-        return view('editnews')->with('info', $info)->with('query', $query)->with('query1', $query1);
+
+        $info = AppSetting::select('*')
+                  ->get();
+            $data = $info[0];
+        return view('editnews')->with('info', $info)->with('query', $query)->with('query1', $query1)->with('data', $data);
     }
 
     /**

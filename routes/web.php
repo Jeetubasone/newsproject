@@ -21,11 +21,12 @@ Route::get('/store', [App\Http\Controllers\CategoryController::class, 'store']);
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'totalDetails']);
 
 
-// Route::middleware('auth:api')->group(function () {
+//  Route::middleware(['auth', 'auth.session'])->group(function () {
 
-Route::get('/add', function () {
-    return view('addcategory');
-});
+// Route::get('/add', function () {
+//     return view('addcategory');
+// });
+Route::get('/add', [App\Http\Controllers\CategoryController::class, 'viewAddCategory']);
 Route::post('/add', [App\Http\Controllers\CategoryController::class, 'storeCategory']);
 Route::get('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
 Route::put('/categorys/edit/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
@@ -58,10 +59,11 @@ Route::get('/singlenews/{id}', [App\Http\Controllers\PublicViewController::class
 
 Route::post('/newslatters', [App\Http\Controllers\NewslatterController::class, 'store']);
 
-Route::get('/addappsetting', function () {
-    return view('/addappsetting');
-});
-Route::post('/addappsetting', [App\Http\Controllers\AppSettingController::class, 'store']);
+// Route::get('/addappsetting', function () {
+//     return view('/addappsetting');
+// });
+Route::get('/addappsetting/edit/{id}', [App\Http\Controllers\AppSettingController::class, 'show']);
+Route::put('/addappsetting/edit/{id}', [App\Http\Controllers\AppSettingController::class, 'update']);
 
 Route::get('/ads', [App\Http\Controllers\AdvertisementController::class, 'create']);
 Route::post('/addads', [App\Http\Controllers\AdvertisementController::class, 'store']);
