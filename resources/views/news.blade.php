@@ -20,7 +20,7 @@
                                   <th scope="col">Category Name</th>
                                   <th scope="col">Subategory Name</th>
                                   <th scope="col">Title</th>
-                                  <th scope="col">Total View</th>
+                                  <th scope="col">Image</th>
                                   <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -31,8 +31,8 @@
                                 <td>{{$q->category_name}}</td>
                                 <td>{{$q->subcategory_name}}</td>
                                 <td>{{$q->title}}</td>
-                                <td>{{$q->total_view}}</td>
-                                <td><a href="{{ url('/all-news/edit', $q->id) }}" class="btn btn-info btn-sm" >Edit</a>
+                                <td class="" style="width: 10%" ><img class="w-100 h-50" src="{{$q->image}}"></td>
+                                <td style="width: 15%"><a href="{{ url('/all-news/edit', $q->id) }}" class="btn btn-info btn-sm" >Edit</a>
                               <a href="{{ url('/all-news/delete', $q->id) }}" class="btn btn-danger btn-sm" >Delete</a></td>
                               </tr>
                           @endforeach

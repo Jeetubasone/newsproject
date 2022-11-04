@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PublicView;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Advertisement;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +23,10 @@ class PublicViewController extends Controller
         try {
             $query = fourNews();
             $query1 = allNews();
-            return view('index')->with('query', $query)->with('query1', $query1);
+            $ads = Advertisement::select('*')
+                    ->orderBy('id', 'desc')
+                    ->get();
+            return view('index')->with('query', $query)->with('query1', $query1)->with('ads', $ads);
         } 
         catch (\Throwable $e) {
             Log::error($e);

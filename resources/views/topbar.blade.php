@@ -8,7 +8,7 @@
                             <a class="nav-link text-body small" href="#">{{ date('D-m-d-Y') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="/dashboard">Admin</a>
+                            <a class="nav-link text-body small" href="/login">Admin</a>
                         </li>
                     </ul>
                 </nav>
@@ -38,7 +38,7 @@
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
                 <a href="/view" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-secondary font-weight-normal">News</span></h1>
+                    <h1 class="m-0 display-4 text-uppercase text-primary">News<span class="text-secondary font-weight-normal">Today</span></h1>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">

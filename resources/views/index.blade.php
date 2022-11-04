@@ -21,7 +21,7 @@
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
                                 <a class="text-white" href="">{{date('d-M-Y', strtotime($q->created_at))}}</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 70)}}</a>
                         </div>
                     </div>
                     @endforeach
@@ -39,7 +39,7 @@
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
                                     <a class="text-white" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 50)}}</a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
                             <a class="text-white" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 50)}}</a>
                     </div>
                 </div>
                

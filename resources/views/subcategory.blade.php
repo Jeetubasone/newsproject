@@ -1,6 +1,4 @@
 @include('header')
-
-
 <!-- Content Start -->
 <div class="content">
     @include('navbar')
@@ -75,13 +73,9 @@
     @include('footer')
 </div>
 <!-- Content End -->
-
-
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </div>
-
 @include('jslibrary')
 </body>
-
 </html>

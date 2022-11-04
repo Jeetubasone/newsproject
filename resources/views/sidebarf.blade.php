@@ -20,7 +20,7 @@
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
                                     <a class="text-body" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                 </div>
-                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 50)}}</a>
                                 <p class="m-0">{{\Illuminate\Support\Str::limit($q->content, 200)}}</p>
                                 <div class="d-flex justify-content-end">
                                 <a class="btn btn-primary btn-sm " href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}} role="button">Read More</a>
@@ -42,7 +42,7 @@
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{$q->category_name}}</a>
                                     <a class="text-body" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                 </div>
-                                <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                                <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 50)}}</a>
                             </div>
                             
                         </div>
@@ -89,9 +89,11 @@
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
                     </div>
+                    @foreach($ads as $key => $a)
                     <div class="bg-white text-center border border-top-0 p-3">
-                        <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
+                        <a href=""><img class="img-fluid" src="{{$a->add_image}}" alt=""></a>
                     </div>
+                    @endforeach
                 </div>
                 <!-- Ads End -->
 
@@ -109,7 +111,7 @@
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{$q->category_name}}</a>
                                     <a class="text-body" href=""><small>{{date('d-M-Y', strtotime($q->created_at))}}</small></a>
                                 </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{$q->title}}</a>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/singlenews', $q->id) }}" id="id" name="id" value={{$q->id}}">{{\Illuminate\Support\Str::limit($q->title, 50)}}</a>
                             </div>
                         </div>
                         @endforeach
