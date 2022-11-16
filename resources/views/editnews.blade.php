@@ -4,7 +4,6 @@
         <div class="content">
         @include('navbar')
 
-
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -18,7 +17,7 @@
                                 <select class="form-select" for="category_id" id="category_id" name="category_id" aria-label="Default select example">
                                     <option selected>Select Category</option>
                                     @foreach($query as $key => $q)
-                                    <option id="category_id" name="category_id" value={{$q->id}}>{{$q->name}}</option>
+                                    <option id="category_id" name="category_id" value={{$q->id}} @if($q->id==$data->category_id) selected @endif>{{$q->name}}</option>
                                     @endforeach
                                 </select>
                                 </div>
@@ -26,13 +25,13 @@
                                 <select class="form-select" for="subcategory_id" id="subcategory_id" name="subcategory_id" aria-label="Default select example">
                                 <option selected>Select SubCategory</option>
                                     @foreach($query1 as $key => $q)
-                                    <option id="subcategory_id" name="subcategory_id" value={{$q->id}}>{{$q->name}}</option>
+                                    <option id="subcategory_id" name="subcategory_id" value={{$q->id}} @if($q->id==$data->subcategory_id) selected @endif>{{$q->name}}</option>
                                     @endforeach
                                 </select>
                                 </div>
                                 <br>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label" >Title</label>
+                                    <label for="title" class="form-label" >Title </label>
                                     <input type="text" class="form-control" id="title" name="title"
                                     >
                                 </div>

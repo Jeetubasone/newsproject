@@ -156,10 +156,8 @@ class NewsController extends Controller
         ->orderBy('id', 'desc')
         ->get();
 
-        $info = AppSetting::select('*')
-                  ->get();
-            $data = $info[0];
-        return view('editnews')->with('info', $info)->with('query', $query)->with('query1', $query1)->with('data', $data);
+        $appsetting = AppSetting::first();
+        return view('editnews')->with('info', $info)->with('query', $query)->with('query1', $query1)->with('data', $info);
     }
 
     /**
